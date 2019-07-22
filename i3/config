@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:URWGothic-Book 11
+font xft:Fira Code 11
 
 # The middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $mod+button2 kill
@@ -77,6 +77,12 @@ bindsym $mod+w exec firefox
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
+
+# kill compton for gaming
+bindsym $mod+Ctrl+g --release exec --no-startup-id pkill compton
+
+# resurrect compton for everything else
+bindsym $mod+g exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 
 # change focus
 bindsym $mod+j focus left
@@ -186,11 +192,8 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
-# Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
-# assign [class="Pale moon"] $ws2
-# assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
+# Float at certain max size
+floating_maximum_size 1676 x 976
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable
@@ -223,7 +226,13 @@ for_window [class="File-roller"] floating enable border pixel 5
 for_window [class="Gcolor3"] floating enable border pixel 5
 for_window [class="Minecraft launcher"] floating enable border pixel 5
 for_window [class="scrcpy"] floating enable border pixel 5
+for_window [class="Deezloader Remix"] border pixel 5
+for_window [class="ark"] floating enable border pixel 5
+for_window [class="Xfce4-panel"] floating enable border pixel 5
 
+for_window [window_type="dialog,utility,toolbar,splash,menu,dropdown_menu,popup_menu,tooltip,notification,dock"] floating enable border pixel 1
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="prefwindow"] floating enable
 
 for_window [class="^Steam$" title="^Friends$"] floating enable border pixel 5
 for_window [class="^Steam$" title="Steam - News"] floating enable border pixel 5
@@ -235,7 +244,8 @@ for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable bord
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable border pixel 5
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable border pixel 5
 for_window [title="^Steam Keyboard$"] floating enable border pixel 5
-for_window [class="Steam"] border pixel 5
+for_window [class=^Steam$"] floating enable border pixel 5
+for_window [class="Steam"] floating enable border pixel 5
 
 # Place windows on certain workspaces
 assign [class="discord"] 2
@@ -308,7 +318,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id xautolock -time 30 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id mpd
@@ -317,6 +327,9 @@ exec --no-startup-id mpd
 #exec --no-startup-id conky --config=/home/jth/.config/conky/conky.conf
 exec --no-startup-id latte-dock
 exec --no-startup-id discord
+exec --no-startup-id musnify-mpd
+#exec --no-startup-id xfce4-panel --disable-wm-check
+
 
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
@@ -332,8 +345,16 @@ set_from_resource $bg i3wm.color2 #f0f0f0
 #client.unfocused        $bg     $bg     $fg  $bg       $bg
 #client.urgent           $bg     $bg     $fg  $bg       $bg
 #client.placeholder      $bg     $bg     $fg  $bg       $bg
-
 #client.background       $bg
+
+# gruvbox colors
+# Customize colors
+client.focused          #b8bb26 #b8bb26 #ebdbb2 #458588 #b8bb26
+client.focused_inactive #282828 #282828 #ebdbb2 #282828 #282828
+client.unfocused        #282828 #282828 #ebdbb2 #282828 #282828
+client.urgent           #282828 #282828 #fb4934 #282828 #282828
+client.placeholder      #282828 #282828 #ebdbb2 #282828 #282828
+
 
 # PROTIP: You can also dynamically set dmenu's colors this way:
 #bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
@@ -366,11 +387,11 @@ gaps outer 12
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+#smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+#smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
