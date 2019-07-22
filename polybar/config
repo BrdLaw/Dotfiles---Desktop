@@ -22,7 +22,7 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = "Fantasque Sans Mono:pixelsize=12;2"
+font-0 = "FiraCode:pixelsize=10;2"
 font-1 = "MaterialIcons-Regular:pixelsize=11;2"
 
 modules-left = i3 windowtitle
@@ -31,7 +31,7 @@ modules-right = volume cpu battery network date shutdown
 
 tray-position = right
 tray-padding = 4
-tray-background = #ad1457
+tray-background = #689D6A
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -42,7 +42,8 @@ monitor = ${env:MONITOR:}
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = #6272a4
+label-focused-background = #83a598
+lable-focused-foreground = #000
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
@@ -71,17 +72,20 @@ pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
-label-mode-background = #025FBF
+label-mode-background = #83a598
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = #025FBF
+label-focused-background = #D79921
+label-focused-foreground = #000s
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+label-unfocused-foreground = #000
+label-unfocused-background =#D79921
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -104,6 +108,7 @@ type = internal/xwindow
 format = <label>
 label = %title%
 label-maxlen = 40
+format-foreground = #D79921
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/mpd]
 type = internal/mpd
@@ -117,6 +122,7 @@ icon-next = 
 
 label-song-maxlen = 25
 label-song-ellipsis = true
+formats-foreground = #ECB32E
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/volume]
 type = internal/pulseaudio
@@ -127,7 +133,7 @@ ramp-volume-1 = ""
 ramp-volume-1-font = 2
 ramp-volume-2 =" "
 ramp-volume-2-font = 2
-format-volume-background = #ffb86c
+format-volume-background = #CC241D
 format-volume-foreground = #000
 
 format-muted = <label-muted>
@@ -175,24 +181,24 @@ format-prefix-font = 2
 format-prefix-foreground = #000
 format-underline = #f90000
 label = %percentage:2%%
-format-background = #7df36e
+format-background = #98971A
 format-foreground = #000
 format-padding = 1
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/network]
 type = internal/network
-interface = wlp2s0
+interface = enp27s0
 format-connected = <label-connected>
 format-connected-prefix = " "
 format-connected-prefix-font = 2
-label-connected = " %essid%%downspeed:9% "
+label-connected = " Don't Call it a Comeback%downspeed:9% "
 label-connected-font = 1
 
 format-disconnected = <label-disconnected>
 label-disconnected = 
 label-disconnected-font = 2
 
-format-connected-background = #8be9fd
+format-connected-background = #458588
 format-connected-foreground = #000
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/date]
@@ -208,7 +214,7 @@ time-alt = "%I:%M:%S %p "
 format-prefix = " "
 format-prefix-font = 2
 format-prefix-foreground = #000
-format-background = #ff79c6
+format-background = #B16286
 format-foreground = #000
 
 label = %date% %time%
@@ -216,10 +222,10 @@ label = %date% %time%
 [module/shutdown]
 type = custom/text
 content = 
-content-background = #ad1457
+content-background = #689D6A
 content-padding = 2
-click-left = systemctl hibernate
-click-right = systemctl reboot
+click-left = systemctl suspend
+click-right = systemctl poweroff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [settings]
 screenchange-reload = true
@@ -234,5 +240,6 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+
 
 
