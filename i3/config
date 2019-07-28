@@ -23,6 +23,9 @@ bindsym $mod+n border normal
 # is used in the bar {} block below.
 font xft:Fira Code 11
 
+# Switch Windows with Dmenu
+bindsym $mod+Tab exec --no-startup-id /home/jth/Documents/i3switch/switch-window.sh
+
 # The middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $mod+button2 kill
 
