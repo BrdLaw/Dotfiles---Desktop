@@ -26,9 +26,6 @@
     icon_position = left
     icon_folders = /usr/share/icons/oomox-Gruvbox
 
-[frame]
-    width = 5
-    color = "#b8bb26"
 
 [shortcuts]
     close = ctrl+space
@@ -36,17 +33,21 @@
     history = ctrl+grave
     context = ctrl+shift+period
 
-[urgency_low]
-    background = "#282828"
-    foreground = "#ebdbb2"
-    timeout = 5
 
-[urgency_normal]
-    background = "#282828"
-    foreground = "#ebdbb2"
-    timeout = 20
+frame_color = "#93a1a1"
+separator_color = "#93a1a1"
 
-[urgency_critical]
-    background = "#282828"
-    foreground = "#ebdbb2"
-    timeout = 0
+[base16_low]
+    msg_urgency = low
+    background = "#073642"
+    foreground = "#657b83"
+
+[base16_normal]
+    msg_urgency = normal
+    background = "#586e75"
+    foreground = "#93a1a1"
+
+[base16_critical]
+    msg_urgency = critical
+    background = "#dc322f"
+    foreground = "#eee8d5"
