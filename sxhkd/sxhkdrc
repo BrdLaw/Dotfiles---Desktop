@@ -1,10 +1,26 @@
-S#
+#
 # wm independent hotkeys
 #
 
+# scratchpad
+#super + u
+#	scratchtermtoggle
+
+# negative -w arg to account for a border width (default: 100%)
+alt + s
+    tdrop -ma -w -4 -y "$PANEL_HEIGHT" -s dropdown alacritty
+
+# firefox
+super + w
+	firefox
+
+# thunar
+super + q
+	thunar
+
 # terminal emulator
 super + a
-	kitty
+	alacritty
 
 # program launcher
 super + d
