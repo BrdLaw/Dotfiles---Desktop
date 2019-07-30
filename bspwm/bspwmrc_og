@@ -2,7 +2,7 @@
 
 sxhkd &
 
-#~/.config/polybar/launch.sh &
+~/.config/polybar/launch.sh &
 
 sleep 1 &
 
@@ -22,15 +22,13 @@ mpd &
 
 pamac-tray &
 
-wmctrl -c Plasma &
-
 xidlehook --not-when-fullscreen --not-when-audio --timer normal 900 'blurlock' '' &
 
-bspc monitor DVI-D-0 -d 3 4 
-bspc monitor HDMI-0 -d 1 2 
+bspc monitor DVI-D-0 -d 6 7 8 9 0
+bspc monitor HDMI-0 -d 1 2 3 4 5 
 
-bspc config border_width         2
-bspc config window_gap          20
+bspc config border_width         4
+bspc config window_gap          12
 
 bspc config split_ratio           0.5
 bspc config borderless_monocle    false
@@ -41,7 +39,6 @@ bspc config normal_border_color   \#98971A
 bspc config presel_feedback_color \#458588
 bspc config focus_follows_pointer true
 bspc config border_radius         10
-bspc config top padding           30
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
@@ -65,22 +62,9 @@ bspc rule -a Gpick state=floating
 bspc rule -a Dconf-editor state=floating
 bspc rule -a Lightdm-settings state=floating
 bspc rule -a Steam state=floating follow=on
-bspc rule -a Plasma state=floating manage=off layer=normal
-#bspc rule -a krunner state=floating sticky=on
-bspc rule -a Klipper state=floating
-bspc rule -a plasmashell sticky=on layer=above state=floating
-
 
 alacritty -c scratchterm &
 bspc rule -a scratchterm sticky=on state=floating hidden=on
 
 #bspc rule -a scratchpad sticky=on state=floating hidden=on
 #kitty -c scratchpad -e ~/bin/scratch &
-
-set -l bspwm_root_id (xdo id -N Bspwm -n root | sort | head -n 1)
-for wid in (xdotool search --class plasmashell)
-    xdo below -t $bspwm_root_id $wid
-end
-
-
-
